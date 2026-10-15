@@ -434,6 +434,7 @@ MAT = dict(
     cushion=m_simple("cushion", (0.93, 0.92, 0.88, 1), 0.9), poolcope=m_simple("coping", (0.85, 0.80, 0.70, 1), 0.6),
 )
 MAT['road'].node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value = (0.45, 0.4, 0.33, 1)
+MAT['carglass'] = m_simple('carglass', (0.05, 0.07, 0.08, 1), 0.08, 0.0, 1.0)
 
 
 # ---- helper functions ----
@@ -541,7 +542,7 @@ def slats(name, x, y0, y1, z0, z1, n, mat):
 def car(name, x, y, paint, rot=0.0):
     parts = []
     b = box(name+"_body", -2.3, 2.3, -0.9, 0.9, 0.35, 1.0, paint); bevel(b, 0.18, 4); parts.append(b)
-    c = box(name+"_cab", -1.1, 1.3, -0.82, 0.82, 1.0, 1.55, MAT['glass']); bevel(c, 0.2, 4); parts.append(c)
+    c = box(name+"_cab", -1.1, 1.3, -0.82, 0.82, 1.0, 1.55, MAT['carglass']); bevel(c, 0.2, 4); parts.append(c)
     r = box(name+"_cabroof", -1.0, 1.1, -0.78, 0.78, 1.5, 1.56, paint); parts.append(r)
     for wx in (-1.45, 1.45):
         for wy in (-0.85, 0.85):
